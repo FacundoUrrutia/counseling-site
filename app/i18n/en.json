@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "about": "About Me",
+    "services": "Services",
+    "howIWork": "How I Work",
+    "contact": "Contact"
+  },
+  "banner": {
+    "title": "Support in your change process",
+    "subtitle": "A space to listen, reflect and grow."
+  },
+  "withMe": {
+    "title": "I'm Ignacia Ayala, professional Counselor",
+    "subtitle": "I accompany you to find clarity and well-being in the moments you need it most.",
+    "text": "My goal is to provide you with a space of support and listening, where you can explore your emotions and find more perspectives.",
+    "button": "Learn more about me",
+    "arrow": "→"
+  },
+  "services": {
+    "title": "My Services",
+    "items": [
+      {
+        "icon": "User",
+        "title": "Individual Counseling",
+        "description": "Personalized support in your change process."
+      },
+      {
+        "icon": "Heart",
+        "title": "Emotional Support",
+        "description": "Support in moments of crisis and transitions."
+      },
+      {
+        "icon": "Sprout",
+        "title": "Personal Orientation & Development",
+        "description": "Tools for your growth and well-being."
+      }
+    ]
+  },
+  "workModality": {
+    "title": "How I Work",
+    "items": [
+      {
+        "title": "Online and In-Person Therapy",
+        "description": "Virtual sessions or in my office."
+      },
+      {
+        "title": "Personal Meetings",
+        "description": "Frequency and duration adapted to your needs."
+      },
+      {
+        "title": "A Confidential Space",
+        "description": "A safe place to express yourself freely."
+      }
+    ]
+  },
+  "contactForm": {
+    "title": "Contact Me",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "email": "Email Address",
+    "message": "Message",
+    "button": "Send",
+    "sending": "Sending...",
+    "success": "Thanks for your message! I'll get back to you soon.",
+    "errorTitle": "Oops!",
+    "errorMessage": "Something went wrong. Please try again."
+  }
+}

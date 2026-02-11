@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "about": "Sobre Mí",
+    "services": "Servicios",
+    "howIWork": "Cómo Trabajo",
+    "contact": "Contacto"
+  },
+  "banner": {
+    "title": "Acompañamiento en tu proceso de cambio",
+    "subtitle": "Un espacio para escuchar, reflexionar y crecer."
+  },
+  "withMe": {
+    "title": "Soy Ignacia Ayala, Counselor profesional",
+    "subtitle": "Te acompaño a encontrar claridad y bienestar en los momentos que lo necesites.",
+    "text": "Mi objetivo es brindarte un espacio de contencion y escucha, donde puedas explorar tus emociones y encontrar mas perspectivas.",
+    "button": "Conoce mas sobre mi ",
+    "arrow": "→"
+  },
+  "services": {
+    "title": "Mis Servicios",
+    "items": [
+      {
+        "icon": "User",
+        "title": "Counseling Individual",
+        "description": "Acompañamiento personalizado en tu proceso de cambio."
+      },
+      {
+        "icon": "Heart",
+        "title": "Acompañamiento Emocional",
+        "description": "Apoyo en momentos de crisis y transiciones."
+      },
+      {
+        "icon": "Sprout",
+        "title": "Orientación y Desarrollo Personal",
+        "description": "Herramientas para tu crecimiento y bienestar."
+      }
+    ]
+  },
+  "workModality": {
+    "title": "Cómo Trabajo",
+    "items": [
+      {
+        "title": "Terapias Online y Presencial",
+        "description": "Sesiones virtuales o en mi consultorio."
+      },
+      {
+        "title": "Encuentros Personales",
+        "description": "Frecuencia y duración adaptadas a tus necesidades."
+      },
+      {
+        "title": "Un Espacio Confidencial",
+        "description": "Un lugar seguro para expresarte libremente."
+      }
+    ]
+  },
+  "contactForm": {
+    "title": "Contacto",
+    "name": "Nombre y Apellido",
+    "phone": "Teléfono",
+    "email": "Correo Electrónico",
+    "message": "Mensaje",
+    "button": "Enviar",
+    "sending": "Enviando...",
+    "success": "¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.",
+    "errorTitle": "Ups!",
+    "errorMessage": "Parece que algo salió mal. Por favor intentalo de nuevo."
+  }
+}

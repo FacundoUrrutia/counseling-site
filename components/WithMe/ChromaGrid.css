@@ -1,0 +1,137 @@
+.chroma-grid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--rows, 1), 1fr);
+  gap: 0;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  --x: 50%;
+  --y: 50%;
+  --r: 220px;
+}
+
+@media (max-width: 1124px) {
+  .chroma-grid {
+    grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+    gap: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .chroma-grid {
+    grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+    gap: 0;
+    padding: 0;
+  }
+}
+
+.chroma-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  border: none;
+  transition: border-color 0.3s ease;
+  background: var(--card-gradient);
+
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(255, 255, 255, 0.3);
+}
+
+.chroma-card:hover {
+  border-color: var(--card-border);
+}
+
+.chroma-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    var(--spotlight-color),
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+
+.chroma-card:hover::before {
+  opacity: 1;
+}
+
+.chroma-img-wrapper {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  overflow: hidden;
+}
+
+.chroma-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Base dimmed grayscale state */
+.chroma-card .chroma-img-wrapper img {
+  filter: grayscale(1) brightness(0.6);
+  transition: filter 0.5s ease;
+}
+
+/* Base fade layer */
+.chroma-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  backdrop-filter: grayscale(1) brightness(0.6);
+  -webkit-backdrop-filter: grayscale(1) brightness(0.6);
+  background: transparent;
+
+  /* The mask reveals the content BELOW it. 
+     To make the middle BRIGHT and COLOR, we need the layer below to be bright/color 
+     and THIS layer to be the gray/dimmed one.
+  */
+  mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    transparent 0%,
+    transparent 20%,
+    rgba(0, 0, 0, 0.4) 60%,
+    black 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    transparent 0%,
+    transparent 20%,
+    rgba(0, 0, 0, 0.4) 60%,
+    black 100%
+  );
+
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* When the card is hovered, the base image also gets a bit brighter globally 
+   but the radial reveal is handled by chroma-fade above. 
+*/
+.chroma-card:hover .chroma-img-wrapper img {
+  filter: grayscale(0) brightness(1.1);
+}
