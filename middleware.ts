@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const locales = ["en", "es"];
-const defaultLocale = "en";
+const locales = ["es", "en"];
+const defaultLocale = "es";
 
 function getLocale(request: NextRequest) {
   const acceptLanguage = request.headers.get("accept-language");
   if (!acceptLanguage) return defaultLocale;
 
+  // We look for "es" first specifically to ensure it takes priority if multiple languages are present
   const preferredLocale = locales.find((locale) =>
     acceptLanguage.toLowerCase().includes(locale),
   );
