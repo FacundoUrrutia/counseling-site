@@ -25,13 +25,10 @@
     "subtitle": "I accompany you to find clarity and well-being in the moments you need it most.",
     "text": "My goal is to offer you a space of support and listening, where you can explore your emotions and find new perspectives.",
     "photoAlt": "Portrait of Ignacia Ayala",
-    "credentialsBoxLabel": "Training confirmed — license and professional association not confirmed",
     "credentialsFormationLabel": "Training",
     "credentialsFormationValue": "Certificate from the Ministry of Education (Buenos Aires). Additional training in Gerontological Counseling (Orientándome, 2025) and Neurocoaching (Holos, 2024). 2 years of professional experience.",
-    "credentialsRegistrationLabel": "License / professional registration",
-    "credentialsRegistrationValue": "Not published on her professional profile — confirm with Ignacia whether it should be shown.",
-    "credentialsAssociationLabel": "Professional association",
-    "credentialsAssociationValue": "Not listed on her professional profile — confirm with Ignacia.",
+    "credentialsRegistrationLabel": "License / professional association",
+    "credentialsRegistrationValue": "She does not currently hold a professional license or belong to a professional association.",
     "credentialsSourceNote": "Source: verified professional profile (Psychology Today / Psicología Hoy). There she's listed as \"Consultora Psicológica\" (Person-Centered Approach); this site uses \"Counselor\" as its brand term.",
     "cta": "Book a session"
   },
@@ -60,10 +57,11 @@
   "approach": {
     "title": "How I Work",
     "pendingBadge": "PENDING",
+    "officeImageAlt": "Ignacia Ayala's office in Montevideo",
     "items": [
       {
         "title": "Modality",
-        "description": "In-person sessions at the office (Bulevar José Batlle y Ordóñez 1624, Apt. 603, Montevideo) or online by video call, Monday through Saturday.",
+        "description": "In-person sessions at the office (Bulevar José Batlle y Ordóñez 1624, Apt. 603, Montevideo) or online by video call, Monday through Saturday. Sessions are conducted in Spanish.",
         "pending": false
       },
       {
@@ -85,7 +83,7 @@
     "items": [
       {
         "title": "Fees",
-        "description": "Individual session: $1500. Couples therapy: $1700. Sliding scale available based on income — ask directly. Payment by cash, card or transfer, on the day of the session.",
+        "description": "Individual session: $1500 (Uruguayan pesos). Couples therapy: $1700. Sliding scale available based on income — ask directly. Payment by cash, card or transfer, on the day of the session.",
         "pending": false
       },
       {

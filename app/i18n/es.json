@@ -25,13 +25,10 @@
     "subtitle": "Te acompaño a encontrar claridad y bienestar en los momentos que lo necesites.",
     "text": "Mi objetivo es brindarte un espacio de contención y escucha, donde puedas explorar tus emociones y encontrar nuevas perspectivas.",
     "photoAlt": "Retrato de Ignacia Ayala",
-    "credentialsBoxLabel": "Formación confirmada — matrícula y colegio profesional sin confirmar",
     "credentialsFormationLabel": "Formación",
     "credentialsFormationValue": "Certificado del Ministerio de Educación (CABA). Formación adicional en Counseling Gerontológico (Orientándome, 2025) y Neurocoaching (Holos, 2024). 2 años de experiencia profesional.",
-    "credentialsRegistrationLabel": "Matrícula / registro profesional",
-    "credentialsRegistrationValue": "No publicada en su perfil profesional — confirmar con Ignacia si corresponde mostrarla.",
-    "credentialsAssociationLabel": "Colegio o asociación profesional",
-    "credentialsAssociationValue": "No figura en su perfil profesional — confirmar con Ignacia.",
+    "credentialsRegistrationLabel": "Matrícula / colegio profesional",
+    "credentialsRegistrationValue": "Por el momento no cuenta con matrícula ni con membresía en un colegio profesional.",
     "credentialsSourceNote": "Fuente: perfil profesional verificado (Psychology Today / Psicología Hoy). Ahí se presenta como \"Consultora Psicológica\" desde el Enfoque Centrado en la Persona; este sitio usa \"Counselor\" como término de marca.",
     "cta": "Reservar una consulta"
   },
@@ -60,6 +57,7 @@
   "approach": {
     "title": "Cómo trabajo",
     "pendingBadge": "PENDIENTE",
+    "officeImageAlt": "El consultorio de Ignacia Ayala en Montevideo",
     "items": [
       {
         "title": "Modalidad",
@@ -85,7 +83,7 @@
     "items": [
       {
         "title": "Honorarios",
-        "description": "Sesión individual: $1500. Terapia de pareja: $1700. Precios variables según ingresos — consultalo directamente. Pago en efectivo, tarjeta o transferencia, el día de la sesión.",
+        "description": "Sesión individual: $1500 (pesos uruguayos). Terapia de pareja: $1700. Precios variables según ingresos — consultalo directamente. Pago en efectivo, tarjeta o transferencia, el día de la sesión.",
         "pending": false
       },
       {

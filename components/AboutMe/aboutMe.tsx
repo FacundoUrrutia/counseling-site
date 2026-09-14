@@ -23,10 +23,11 @@ const AboutMe = ({ dict }: { dict: Dict }) => (
       <p className="italic text-neutral-700 mb-4">{dict.aboutMe.subtitle}</p>
       <p className="text-neutral-800 mb-6">{dict.aboutMe.text}</p>
 
-      <div className="flex flex-col gap-2.5 border-[1.5px] border-dashed border-neutral-400 rounded-2xl p-5 mb-5">
-        <div className="text-[10px] tracking-wide font-mono text-accent-700">
-          {dict.aboutMe.credentialsBoxLabel}
-        </div>
+      {/* Confirmed facts now (formación is real, registration status is a
+          verified "not currently" rather than an unknown) — a plain surface
+          card instead of the dashed "unconfirmed" treatment used elsewhere
+          for content still awaiting Ignacia's input. */}
+      <div className="flex flex-col gap-2.5 bg-surface rounded-2xl p-5 mb-5">
         <div className="text-sm text-neutral-800">
           {dict.aboutMe.credentialsFormationLabel}:{" "}
           <span className="text-neutral-700">{dict.aboutMe.credentialsFormationValue}</span>
@@ -34,10 +35,6 @@ const AboutMe = ({ dict }: { dict: Dict }) => (
         <div className="text-sm text-neutral-800">
           {dict.aboutMe.credentialsRegistrationLabel}:{" "}
           <span className="text-neutral-700">{dict.aboutMe.credentialsRegistrationValue}</span>
-        </div>
-        <div className="text-sm text-neutral-800">
-          {dict.aboutMe.credentialsAssociationLabel}:{" "}
-          <span className="text-neutral-700">{dict.aboutMe.credentialsAssociationValue}</span>
         </div>
         <p className="text-xs text-neutral-700 mt-1">
           {dict.aboutMe.credentialsSourceNote}
