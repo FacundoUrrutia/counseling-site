@@ -1,68 +1,132 @@
 {
+  "meta": {
+    "title": "Ignacia Ayala | Counseling & Acompañamiento",
+    "description": "Un espacio para escuchar, reflexionar y crecer. Acompañamiento profesional en tu proceso de cambio."
+  },
   "nav": {
-    "about": "Sobre Mí",
-    "services": "Servicios",
-    "howIWork": "Cómo Trabajo",
-    "contact": "Contacto"
+    "brand": "Ignacia Ayala",
+    "aboutMe": "Sobre mí",
+    "specialties": "Especialidades",
+    "approach": "Cómo trabajo",
+    "logistics": "Honorarios",
+    "contact": "Contacto",
+    "whatsapp": "WhatsApp"
   },
-  "banner": {
-    "title": "Acompañamiento en tu proceso de cambio",
-    "subtitle": "Un espacio para escuchar, reflexionar y crecer."
+  "hero": {
+    "titleBefore": "Te acompaño a atravesar",
+    "specialtiesExample": "ansiedad · duelo · vínculos de pareja · adolescencia",
+    "titleAfter": "con escucha profesional.",
+    "placeholderNote": "Ejemplo ilustrativo — reemplazar por las especialidades reales de Ignacia antes de publicar.",
+    "subtitle": "Un espacio de escucha y acompañamiento profesional, para encontrar claridad y herramientas en el momento en que las necesites.",
+    "ctaPrimary": "Reservar una consulta",
+    "ctaSecondary": "Escribime por WhatsApp"
   },
-  "withMe": {
+  "aboutMe": {
     "title": "Soy Ignacia Ayala, Counselor profesional",
     "subtitle": "Te acompaño a encontrar claridad y bienestar en los momentos que lo necesites.",
-    "text": "Mi objetivo es brindarte un espacio de contencion y escucha, donde puedas explorar tus emociones y encontrar mas perspectivas.",
-    "button": "Conoce mas sobre mi ",
-    "arrow": "→"
+    "text": "Mi objetivo es brindarte un espacio de contención y escucha, donde puedas explorar tus emociones y encontrar nuevas perspectivas.",
+    "photoAlt": "Retrato de Ignacia Ayala",
+    "credentialsPendingLabel": "Pendiente — confirmar con Ignacia",
+    "credentialsFormationLabel": "Formación",
+    "credentialsRegistrationLabel": "Matrícula / registro profesional",
+    "credentialsAssociationLabel": "Colegio o asociación profesional",
+    "credentialsPlaceholder": "[completar]",
+    "credentialsSourceNote": "Nota: en Psychology Today la lista hoy como \"psicóloga\" en Montevideo — confirmar la denominación correcta antes de publicar.",
+    "cta": "Reservar una consulta"
   },
-  "services": {
-    "title": "Mis Servicios",
+  "specialties": {
+    "title": "Especialidades",
+    "placeholderNote": "Placeholder — reemplazar por la lista real de problemas/poblaciones que trabaja Ignacia.",
+    "exampleBadge": "EJEMPLO",
     "items": [
       {
-        "icon": "User",
-        "title": "Counseling Individual",
-        "description": "Acompañamiento personalizado en tu proceso de cambio."
+        "title": "Ansiedad",
+        "description": "[completar con el enfoque real de Ignacia]"
       },
       {
-        "icon": "Heart",
-        "title": "Acompañamiento Emocional",
-        "description": "Apoyo en momentos de crisis y transiciones."
+        "title": "Duelo y pérdida",
+        "description": "[completar con el enfoque real de Ignacia]"
       },
       {
-        "icon": "Sprout",
-        "title": "Orientación y Desarrollo Personal",
-        "description": "Herramientas para tu crecimiento y bienestar."
+        "title": "Vínculos de pareja",
+        "description": "[completar con el enfoque real de Ignacia]"
+      },
+      {
+        "title": "Adolescencia",
+        "description": "[completar con el enfoque real de Ignacia]"
       }
     ]
   },
-  "workModality": {
-    "title": "Cómo Trabajo",
+  "approach": {
+    "title": "Cómo trabajo",
+    "pendingBadge": "PENDIENTE",
     "items": [
       {
-        "title": "Terapias Online y Presencial",
-        "description": "Sesiones virtuales o en mi consultorio."
+        "title": "Modalidad",
+        "description": "Sesiones presenciales en consultorio u online por videollamada, según lo que te resulte más cómodo.",
+        "pending": false
       },
       {
-        "title": "Encuentros Personales",
-        "description": "Frecuencia y duración adaptadas a tus necesidades."
+        "title": "Duración de sesión",
+        "description": "[completar, ej. 45–50 minutos]",
+        "pending": true
       },
       {
-        "title": "Un Espacio Confidencial",
-        "description": "Un lugar seguro para expresarte libremente."
+        "title": "La primera consulta",
+        "description": "Conversamos sobre lo que te trae a terapia, cómo trabajo, y armamos juntas los próximos pasos. No hace falta preparar nada.",
+        "pending": false
       }
     ]
+  },
+  "logistics": {
+    "title": "Honorarios y logística",
+    "placeholderNote": "Todo este bloque necesita datos reales de Ignacia — no inventar cifras.",
+    "pendingBadge": "PENDIENTE",
+    "items": [
+      {
+        "title": "Honorarios",
+        "description": "[completar, orientación de precio por sesión]"
+      },
+      {
+        "title": "Obra social / prepaga",
+        "description": "[completar si corresponde]"
+      },
+      {
+        "title": "Política de cancelación",
+        "description": "[completar, ej. horas de anticipación]"
+      }
+    ],
+    "cta": "Reservar una consulta"
+  },
+  "confidentiality": {
+    "text": "Todo lo que se comparte en sesión está protegido por el secreto profesional, con las excepciones legales que correspondan ante riesgo de vida.",
+    "emergencyLead": "Este formulario no es un canal de emergencia.",
+    "emergencyIntro": "Si estás en una crisis o en riesgo, comunicate con la Línea Vida de prevención del suicidio (Uruguay):",
+    "emergencyPhone1": "0800 0767",
+    "emergencyPhone1Label": "desde teléfono fijo",
+    "emergencyConnector": "o",
+    "emergencyPhone2": "*0767",
+    "emergencyPhone2Label": "desde celular",
+    "emergencyClosing": "gratuita, las 24 horas, todos los días del año."
   },
   "contactForm": {
     "title": "Contacto",
-    "name": "Nombre y Apellido",
+    "name": "Nombre y apellido",
     "phone": "Teléfono",
-    "email": "Correo Electrónico",
+    "email": "Correo electrónico",
     "message": "Mensaje",
     "button": "Enviar",
     "sending": "Enviando...",
     "success": "¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.",
     "errorTitle": "Ups!",
-    "errorMessage": "Parece que algo salió mal. Por favor intentalo de nuevo."
+    "errorMessage": "Parece que algo salió mal. Por favor intentalo de nuevo.",
+    "whatsappPrompt": "¿Preferís algo más directo?",
+    "whatsappCta": "Escribime por WhatsApp",
+    "whatsappPlaceholder": "[completar número]"
+  },
+  "footer": {
+    "copyrightName": "Ignacia Ayala — Counselor profesional",
+    "denominationNote": "[confirmar denominación]",
+    "credentialLink": "Perfil verificado en Psychology Today"
   }
 }

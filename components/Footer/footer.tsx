@@ -1,15 +1,22 @@
-"use client";
+import type { Dict } from "@/app/i18n/dictionaries";
 
-const Footer = () => {
-  return (
-    <footer className="w-full py-8 mt-2 border-t border-black/5">
-      <div className="flex flex-col items-center justify-center text-center">
-        <p className="text-sm font-serif text-black/70 tracking-wide">
-          Copyright 2026 © Ignacia Ayala
-        </p>
-      </div>
-    </footer>
-  );
-};
+const Footer = ({ dict }: { dict: Dict }) => (
+  <footer className="max-w-[1100px] mx-auto px-6 pt-8 pb-12 border-t border-ink/10 text-center">
+    <p className="text-[13px] text-neutral-700 mb-1.5">
+      © {new Date().getFullYear()} {dict.footer.copyrightName}{" "}
+      <span className="font-mono text-[11px] text-neutral-700">
+        {dict.footer.denominationNote}
+      </span>
+    </p>
+    <a
+      href="https://www.psychologytoday.com/uy/psicologos/ignacia-ayala-montevideo-mo/1681181"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-xs text-accent-700 hover:text-accent-800 transition-colors"
+    >
+      {dict.footer.credentialLink}
+    </a>
+  </footer>
+);
 
 export default Footer;
