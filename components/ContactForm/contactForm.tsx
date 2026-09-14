@@ -3,6 +3,7 @@
 import { useForm, ValidationError } from "@formspree/react";
 import { CheckCircle2, AlertCircle, Send } from "lucide-react";
 import SectionHeading from "@/components/ui/sectionHeading";
+import { whatsappUrl } from "@/lib/site";
 import type { Dict } from "@/app/i18n/dictionaries";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "mykdkojv";
@@ -121,12 +122,14 @@ const ContactForm = ({ dict }: { dict: Dict }) => {
 
       <p className="text-center text-sm text-neutral-700 mt-6">
         {dict.contactForm.whatsappPrompt}{" "}
-        <span className="text-accent-2-700">
-          {dict.contactForm.whatsappCta}{" "}
-          <span className="font-mono text-xs text-neutral-700">
-            {dict.contactForm.whatsappPlaceholder}
-          </span>
-        </span>
+        <a
+          href={whatsappUrl(dict.contactForm.whatsappMessage)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-accent-2-700 hover:text-accent-2-800 transition-colors"
+        >
+          {dict.contactForm.whatsappCta}
+        </a>
       </p>
     </section>
   );

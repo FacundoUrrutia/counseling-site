@@ -1,3 +1,4 @@
+import { whatsappUrl } from "@/lib/site";
 import type { Dict } from "@/app/i18n/dictionaries";
 
 const Hero = ({ dict }: { dict: Dict }) => (
@@ -28,7 +29,9 @@ const Hero = ({ dict }: { dict: Dict }) => (
         {dict.hero.ctaPrimary}
       </a>
       <a
-        href="#contacto"
+        href={whatsappUrl(dict.contactForm.whatsappMessage)}
+        target="_blank"
+        rel="noopener noreferrer"
         className="no-underline text-[15px] border border-ink/[0.16] text-ink px-[30px] py-3.5 rounded-full hover:bg-ink/[0.07] transition-colors"
       >
         {dict.hero.ctaSecondary}

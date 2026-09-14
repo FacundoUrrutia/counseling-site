@@ -1,6 +1,7 @@
 "use client";
 
 import LanguageSwitcher from "../LanguageSwitcher";
+import { whatsappUrl } from "@/lib/site";
 import type { Dict } from "@/app/i18n/dictionaries";
 
 interface NavProps {
@@ -49,8 +50,9 @@ const Nav = ({ dict, lang }: NavProps) => {
       ))}
 
       <a
-        href="#contacto"
-        onClick={(e) => handleScroll(e, "#contacto")}
+        href={whatsappUrl(dict.contactForm.whatsappMessage)}
+        target="_blank"
+        rel="noopener noreferrer"
         className="text-[13px] bg-accent-2-700 text-bg px-[18px] py-2.5 rounded-full whitespace-nowrap no-underline hover:bg-accent-2-800 transition-colors"
       >
         {dict.nav.whatsapp}
