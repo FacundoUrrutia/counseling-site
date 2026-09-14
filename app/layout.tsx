@@ -1,17 +1,41 @@
-/**
- * Root layout — Next.js requires this file to exist so it has somewhere to
- * render routes that fall outside app/[lang] (the global not-found page,
- * and any request the locale-redirect proxy doesn't rewrite). Before this
- * file existed, those requests crashed with a 500 (see app/[lang]/layout.tsx
- * for where <html>/<body> and locale-specific chrome actually live).
- *
- * It stays a pure pass-through: app/[lang]/layout.tsx owns <html>/<body>
- * so it can set the correct lang="es" / lang="en" per request.
- */
+import type { Metadata } from "next";
+import { Caprasimo, Figtree } from "next/font/google";
+import "./globals.css";
+import { sanityFetch } from "@/sanity/lib/fetch";
+import { SITE_SETTINGS_QUERY, type SiteSettings } from "@/sanity/lib/queries";
+
+const caprasimo = Caprasimo({
+  variable: "--font-caprasimo",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const figtree = Figtree({
+  variable: "--font-figtree",
+  weight: ["400", "600", "700"],
+  subsets: ["latin"],
+});
+
+export async function generateMetadata(): Promise<Metadata> {
+  const siteSettings = await sanityFetch<SiteSettings | null>(SITE_SETTINGS_QUERY);
+  return {
+    title: siteSettings?.metaTitle ?? "Ignacia Ayala | Counseling & Acompañamiento",
+    description:
+      siteSettings?.metaDescription ??
+      "Un espacio para escuchar, reflexionar y crecer. Acompañamiento profesional en tu proceso de cambio.",
+  };
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <html lang="es">
+      <body className={`${caprasimo.variable} ${figtree.variable} antialiased`}>
+        {children}
+      </body>
+    </html>
+  );
 }

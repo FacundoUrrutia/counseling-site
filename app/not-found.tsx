@@ -1,38 +1,19 @@
 import Link from "next/link";
 
 /**
- * Global not-found — catches any request that never reaches app/[lang]
- * (an unmatched URL with a dot in it, which the proxy's matcher deliberately
- * skips; see proxy.ts). Bilingual by necessity: there's no locale segment
- * to read a dictionary from here.
+ * Ya no necesita su propio <html>/<body> — con un solo root layout
+ * (app/layout.tsx) esta página se anida ahí normalmente, como cualquier
+ * otra ruta. La complejidad anterior (not-found con su propio html/body
+ * bilingüe) era consecuencia del split [lang], que ya no existe.
  */
-export default function GlobalNotFound() {
+export default function NotFound() {
   return (
-    <html lang="es">
-      <body
-        style={{
-          margin: 0,
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "0.75rem",
-          padding: "2rem",
-          textAlign: "center",
-          background: "#f5ead8",
-          color: "#201e1d",
-          fontFamily: "system-ui, sans-serif",
-        }}
-      >
-        <p style={{ margin: 0, fontSize: "0.875rem", opacity: 0.7 }}>404</p>
-        <p style={{ margin: 0, fontSize: "1.125rem" }}>
-          Página no encontrada · Page not found
-        </p>
-        <Link href="/es" style={{ color: "#b2622d" }}>
-          Volver al inicio · Back home
-        </Link>
-      </body>
-    </html>
+    <div className="min-h-[100dvh] flex flex-col items-center justify-center gap-3 px-8 text-center">
+      <p className="m-0 text-sm text-neutral-600">404</p>
+      <p className="m-0 text-lg text-ink">Página no encontrada</p>
+      <Link href="/" className="text-accent-700 hover:text-accent-800 transition-colors">
+        Volver al inicio
+      </Link>
+    </div>
   );
 }

@@ -1,33 +1,30 @@
 import SectionHeading from "@/components/ui/sectionHeading";
 import PlaceholderCard from "@/components/ui/placeholderCard";
 import ImageCard from "@/components/ui/imageCard";
-import type { Dict } from "@/app/i18n/dictionaries";
+import { urlFor } from "@/sanity/lib/image";
+import type { Approach as ApproachContent } from "@/sanity/lib/queries";
 
-const Approach = ({ dict }: { dict: Dict }) => (
+// Fija en código, no en Sanity — es un label de estado de UI, no contenido
+// de Ignacia (ver el mismo criterio en Logistics).
+const PENDING_BADGE = "PENDIENTE";
+
+const Approach = ({ approach }: { approach: ApproachContent }) => (
   <section id="enfoque" className="max-w-[1100px] mx-auto px-6 py-14">
-    <SectionHeading title={dict.approach.title} />
+    <SectionHeading title={approach.title} />
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {dict.approach.items.map((item, index) =>
-        /* First item (Modalidad) pairs with a real photo of the office —
-           everything else stays a plain text card. */
-        index === 0 ? (
-          <ImageCard
-            key={item.title}
-            title={item.title}
-            description={item.description}
-            imageSrc="/images/consultorio.jpeg"
-            imageAlt={dict.approach.officeImageAlt}
-          />
-        ) : (
-          <PlaceholderCard
-            key={item.title}
-            title={item.title}
-            description={item.description}
-            badgeLabel={item.pending ? dict.approach.pendingBadge : undefined}
-          />
-        ),
-      )}
+      <ImageCard
+        title={approach.modalityTitle}
+        description={approach.modalityText}
+        imageSrc={urlFor(approach.officePhoto).width(720).height(540).url()}
+        imageAlt={approach.officePhoto.alt}
+      />
+      <PlaceholderCard
+        title={approach.sessionDurationTitle}
+        description={approach.sessionDurationText ?? "[completar, ej. 45–50 minutos]"}
+        badgeLabel={approach.sessionDurationText ? undefined : PENDING_BADGE}
+      />
+      <PlaceholderCard title={approach.firstConsultTitle} description={approach.firstConsultText} />
     </div>
   </section>
 );

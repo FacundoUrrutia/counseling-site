@@ -1,23 +1,21 @@
 "use client";
 
-import LanguageSwitcher from "../LanguageSwitcher";
 import { whatsappUrl } from "@/lib/site";
-import type { Dict } from "@/app/i18n/dictionaries";
+import type { SiteSettings } from "@/sanity/lib/queries";
 
-interface NavProps {
-  dict: Dict;
-  lang: string;
-}
+// Labels de navegación: quedan fijos en código, no en Sanity — están
+// acoplados 1:1 a los anchors (#sobre-mi, etc.) de cada sección. Editarlos
+// desde el Studio sin saber que el href sigue apuntando al id viejo
+// rompería el scroll silenciosamente.
+const NAV_ITEMS = [
+  { label: "Sobre mí", href: "#sobre-mi" },
+  { label: "Especialidades", href: "#especialidades" },
+  { label: "Cómo trabajo", href: "#enfoque" },
+  { label: "Honorarios", href: "#logistica" },
+  { label: "Contacto", href: "#contacto" },
+];
 
-const Nav = ({ dict, lang }: NavProps) => {
-  const navItems = [
-    { label: dict.nav.aboutMe, href: "#sobre-mi" },
-    { label: dict.nav.specialties, href: "#especialidades" },
-    { label: dict.nav.approach, href: "#enfoque" },
-    { label: dict.nav.logistics, href: "#logistica" },
-    { label: dict.nav.contact, href: "#contacto" },
-  ];
-
+const Nav = ({ siteSettings }: { siteSettings: SiteSettings | null }) => {
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
@@ -35,10 +33,10 @@ const Nav = ({ dict, lang }: NavProps) => {
         onClick={(e) => handleScroll(e, "#hero")}
         className="text-[19px] mr-auto no-underline text-ink"
       >
-        {dict.nav.brand}
+        {siteSettings?.brandName ?? "Ignacia Ayala"}
       </a>
 
-      {navItems.map((item) => (
+      {NAV_ITEMS.map((item) => (
         <a
           key={item.href}
           href={item.href}
@@ -49,16 +47,16 @@ const Nav = ({ dict, lang }: NavProps) => {
         </a>
       ))}
 
-      <a
-        href={whatsappUrl(dict.contactForm.whatsappMessage)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[13px] bg-accent-2-700 text-bg px-[18px] py-2.5 rounded-full whitespace-nowrap no-underline hover:bg-accent-2-800 transition-colors"
-      >
-        {dict.nav.whatsapp}
-      </a>
-
-      <LanguageSwitcher currentLang={lang} />
+      {siteSettings && (
+        <a
+          href={whatsappUrl(siteSettings.whatsappNumber, siteSettings.whatsappMessage)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[13px] bg-accent-2-700 text-bg px-[18px] py-2.5 rounded-full whitespace-nowrap no-underline hover:bg-accent-2-800 transition-colors"
+        >
+          {siteSettings.whatsappNavLabel}
+        </a>
+      )}
     </nav>
   );
 };

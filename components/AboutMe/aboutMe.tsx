@@ -1,17 +1,23 @@
 import Image from "next/image";
-import type { Dict } from "@/app/i18n/dictionaries";
+import { urlFor } from "@/sanity/lib/image";
+import type { AboutMe as AboutMeContent, SiteSettings } from "@/sanity/lib/queries";
 
-const AboutMe = ({ dict }: { dict: Dict }) => (
+interface AboutMeProps {
+  aboutMe: AboutMeContent;
+  siteSettings: SiteSettings;
+}
+
+const AboutMe = ({ aboutMe, siteSettings }: AboutMeProps) => (
   <section
     id="sobre-mi"
     className="max-w-[1000px] mx-auto px-6 py-14 flex flex-wrap gap-12 items-start"
   >
     <div className="flex-1 basis-[260px] max-w-[340px]">
       <Image
-        src="/images/ina320x400.jpeg"
-        alt={dict.aboutMe.photoAlt}
-        width={320}
-        height={400}
+        src={urlFor(aboutMe.photo).width(680).height(850).url()}
+        alt={aboutMe.photo.alt}
+        width={340}
+        height={425}
         priority
         sizes="(min-width: 768px) 340px, 60vw"
         className="w-full aspect-[4/5] object-cover rounded-[28px] shadow-lg washed"
@@ -19,33 +25,31 @@ const AboutMe = ({ dict }: { dict: Dict }) => (
     </div>
 
     <div className="flex-[2] basis-[380px] min-w-0">
-      <h2 className="text-2xl md:text-[28px] mb-1.5">{dict.aboutMe.title}</h2>
-      <p className="italic text-neutral-700 mb-4">{dict.aboutMe.subtitle}</p>
-      <p className="text-neutral-800 mb-6">{dict.aboutMe.text}</p>
+      <h2 className="text-2xl md:text-[28px] mb-1.5">{aboutMe.title}</h2>
+      <p className="italic text-neutral-700 mb-4">{aboutMe.subtitle}</p>
+      <p className="text-neutral-800 mb-6">{aboutMe.text}</p>
 
-      {/* Confirmed facts now (formación is real, registration status is a
-          verified "not currently" rather than an unknown) — a plain surface
-          card instead of the dashed "unconfirmed" treatment used elsewhere
-          for content still awaiting Ignacia's input. */}
+      {/* Campos de texto libre, no un booleano "pendiente" — hoy reflejan
+          hechos confirmados (no tener matrícula es un dato real). */}
       <div className="flex flex-col gap-2.5 bg-surface rounded-2xl p-5 mb-5">
         <div className="text-sm text-neutral-800">
-          {dict.aboutMe.credentialsFormationLabel}:{" "}
-          <span className="text-neutral-700">{dict.aboutMe.credentialsFormationValue}</span>
+          {aboutMe.credentialsFormationLabel}:{" "}
+          <span className="text-neutral-700">{aboutMe.credentialsFormationValue}</span>
         </div>
         <div className="text-sm text-neutral-800">
-          {dict.aboutMe.credentialsRegistrationLabel}:{" "}
-          <span className="text-neutral-700">{dict.aboutMe.credentialsRegistrationValue}</span>
+          {aboutMe.credentialsRegistrationLabel}:{" "}
+          <span className="text-neutral-700">{aboutMe.credentialsRegistrationValue}</span>
         </div>
-        <p className="text-xs text-neutral-700 mt-1">
-          {dict.aboutMe.credentialsSourceNote}
-        </p>
+        {aboutMe.credentialsSourceNote && (
+          <p className="text-xs text-neutral-700 mt-1">{aboutMe.credentialsSourceNote}</p>
+        )}
       </div>
 
       <a
         href="#contacto"
         className="no-underline text-sm text-accent-700 hover:text-accent-800 transition-colors"
       >
-        {dict.aboutMe.cta} →
+        {siteSettings.primaryCtaLabel} →
       </a>
     </div>
   </section>

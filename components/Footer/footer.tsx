@@ -1,18 +1,20 @@
-import type { Dict } from "@/app/i18n/dictionaries";
+import type { SiteSettings } from "@/sanity/lib/queries";
 
-const Footer = ({ dict }: { dict: Dict }) => (
+const Footer = ({ siteSettings }: { siteSettings: SiteSettings }) => (
   <footer className="max-w-[1100px] mx-auto px-6 pt-8 pb-12 border-t border-ink/10 text-center">
     <p className="text-[13px] text-neutral-700 mb-1.5">
-      © {new Date().getFullYear()} {dict.footer.copyrightName}
+      © {new Date().getFullYear()} {siteSettings.footerCopyrightName}
     </p>
-    <a
-      href="https://www.psychologytoday.com/uy/psicologos/ignacia-ayala-montevideo-mo/1681181"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-xs text-accent-700 hover:text-accent-800 transition-colors"
-    >
-      {dict.footer.credentialLink}
-    </a>
+    {siteSettings.footerCredentialUrl && siteSettings.footerCredentialLabel && (
+      <a
+        href={siteSettings.footerCredentialUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs text-accent-700 hover:text-accent-800 transition-colors"
+      >
+        {siteSettings.footerCredentialLabel}
+      </a>
+    )}
   </footer>
 );
 
