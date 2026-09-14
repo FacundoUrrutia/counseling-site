@@ -18,6 +18,19 @@ Sin un proyecto de Sanity conectado (ver abajo), el sitio compila pero
 las páginas que dependen de contenido van a fallar al hacer fetch — es
 esperado, no un bug.
 
+## Costo
+
+El plan **Free** de Sanity alcanza de sobra para este sitio: 1 dataset
+(el límite es 2), ~11 documentos (el límite es 10.000), y las 2 fotos
+actuales pesan una fracción mínima de los 100 GB de storage incluidos.
+El tráfico de API tampoco es un problema — con ISR revalidando cada 60
+segundos, el sitio no golpea la API de Sanity por cada visita.
+
+El único límite real del plan Free: solo existen los roles
+Administrator y Viewer — no hay un rol "Editor" acotado a contenido sin
+acceso a configuración, eso es de pago (Growth, $15/seat/mes). Ver
+"Cómo edita Ignacia" más abajo para el detalle.
+
 ## Conectar un proyecto real
 
 Este repo trae todo el código listo (Studio, schemas, cliente, queries,
@@ -75,10 +88,19 @@ Studio con todos los documentos ya poblados.
    esté publicado) y se loguea con su cuenta de Sanity — Google,
    GitHub o email/contraseña, lo que hayas usado para invitarla.
 2. La invitás desde [sanity.io/manage](https://sanity.io/manage) → tu
-   proyecto → Members → **Invite members**, con rol **Editor** (puede
-   crear/editar/publicar contenido, pero no cambiar el schema ni la
-   configuración del proyecto — eso queda reservado a rol **Administrator**,
-   que deberías mantener vos).
+   proyecto → Members → **Invite members**, con rol **Administrator**.
+
+   Ojo: en el plan **Free** de Sanity solo hay dos roles — Administrator
+   (lectura/escritura completa + acceso a configuración del proyecto) y
+   Viewer (solo lectura, no puede editar nada). El rol **Editor** — el
+   que restringe a "puede publicar contenido pero no toca settings" —
+   es una función paga, recién disponible desde el plan Growth
+   ($15/seat/mes). Para que Ignacia pueda editar de verdad en Free, la
+   única opción es invitarla como Administrator: va a poder ver la
+   pestaña de Settings (tokens, miembros, billing) además del
+   contenido, aunque en la práctica no tiene motivo para tocarla. Si en
+   algún momento preferís que quede estrictamente limitada a contenido,
+   ahí sí conviene pasar a Growth y darle Editor.
 3. En el panel izquierdo del Studio ve las secciones del sitio
    (Configuración del sitio, Hero, Sobre mí, Especialidades, Cómo
    trabajo, Honorarios y logística, Confidencialidad) más la lista de
