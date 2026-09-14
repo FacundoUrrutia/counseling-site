@@ -14,9 +14,8 @@
   },
   "hero": {
     "titleBefore": "I'll walk with you through",
-    "specialtiesExample": "anxiety · grief · couples · adolescence",
+    "specialtiesExample": "spirituality · grief · couples therapy · anxiety",
     "titleAfter": "with professional listening.",
-    "placeholderNote": "Illustrative example — replace with Ignacia's real specialties before publishing.",
     "subtitle": "A space for listening and professional support, to find clarity and tools whenever you need them.",
     "ctaPrimary": "Book a session",
     "ctaSecondary": "Message on WhatsApp"
@@ -26,34 +25,35 @@
     "subtitle": "I accompany you to find clarity and well-being in the moments you need it most.",
     "text": "My goal is to offer you a space of support and listening, where you can explore your emotions and find new perspectives.",
     "photoAlt": "Portrait of Ignacia Ayala",
-    "credentialsPendingLabel": "Pending — confirm with Ignacia",
+    "credentialsBoxLabel": "Training confirmed — license and professional association not confirmed",
     "credentialsFormationLabel": "Training",
+    "credentialsFormationValue": "Certificate from the Ministry of Education (Buenos Aires). Additional training in Gerontological Counseling (Orientándome, 2025) and Neurocoaching (Holos, 2024). 2 years of professional experience.",
     "credentialsRegistrationLabel": "License / professional registration",
+    "credentialsRegistrationValue": "Not published on her professional profile — confirm with Ignacia whether it should be shown.",
     "credentialsAssociationLabel": "Professional association",
-    "credentialsPlaceholder": "[to complete]",
-    "credentialsSourceNote": "Note: Psychology Today currently lists her as a \"psychologist\" in Montevideo — confirm the correct professional title before publishing.",
+    "credentialsAssociationValue": "Not listed on her professional profile — confirm with Ignacia.",
+    "credentialsSourceNote": "Source: verified professional profile (Psychology Today / Psicología Hoy). There she's listed as \"Consultora Psicológica\" (Person-Centered Approach); this site uses \"Counselor\" as its brand term.",
     "cta": "Book a session"
   },
   "specialties": {
     "title": "Specialties",
-    "placeholderNote": "Placeholder — replace with the real list of issues/populations Ignacia works with.",
-    "exampleBadge": "EXAMPLE",
+    "sourceNote": "From her verified professional profile (Psychology Today / Psicología Hoy).",
     "items": [
       {
+        "title": "Spirituality",
+        "description": "A space to explore the spiritual dimension of well-being, integrated into the therapeutic process."
+      },
+      {
+        "title": "Grief",
+        "description": "Support through processes of loss and grief."
+      },
+      {
+        "title": "Couples therapy",
+        "description": "Working with couples on connection, communication and conflict."
+      },
+      {
         "title": "Anxiety",
-        "description": "[to complete with Ignacia's real approach]"
-      },
-      {
-        "title": "Grief and loss",
-        "description": "[to complete with Ignacia's real approach]"
-      },
-      {
-        "title": "Couples",
-        "description": "[to complete with Ignacia's real approach]"
-      },
-      {
-        "title": "Adolescence",
-        "description": "[to complete with Ignacia's real approach]"
+        "description": "Tools for managing anxiety in everyday life."
       }
     ]
   },
@@ -63,7 +63,7 @@
     "items": [
       {
         "title": "Modality",
-        "description": "In-person sessions at the office or online by video call, whichever feels more comfortable for you.",
+        "description": "In-person sessions at the office (Bulevar José Batlle y Ordóñez 1624, Apt. 603, Montevideo) or online by video call, Monday through Saturday.",
         "pending": false
       },
       {
@@ -73,27 +73,30 @@
       },
       {
         "title": "The first session",
-        "description": "We'll talk about what brings you to therapy, how I work, and plan the next steps together. No need to prepare anything.",
+        "description": "You can book a free 15-minute introductory call to talk about what brings you to therapy and how she works, before deciding whether to continue.",
         "pending": false
       }
     ]
   },
   "logistics": {
     "title": "Fees & logistics",
-    "placeholderNote": "This whole block needs real data from Ignacia — don't invent figures.",
+    "sourceNote": "Fees and payment methods from her verified professional profile — confirm they're still current with Ignacia.",
     "pendingBadge": "PENDING",
     "items": [
       {
         "title": "Fees",
-        "description": "[to complete, price guidance per session]"
+        "description": "Individual session: $1500. Couples therapy: $1700. Sliding scale available based on income — ask directly. Payment by cash, card or transfer, on the day of the session.",
+        "pending": false
       },
       {
         "title": "Insurance / health plan",
-        "description": "[to complete if applicable]"
+        "description": "Does not work with insurance or health plans — payment is out of pocket.",
+        "pending": false
       },
       {
         "title": "Cancellation policy",
-        "description": "[to complete, e.g. notice required]"
+        "description": "[to complete, e.g. notice required]",
+        "pending": true
       }
     ],
     "cta": "Book a session"
@@ -126,7 +129,6 @@
   },
   "footer": {
     "copyrightName": "Ignacia Ayala — Professional Counselor",
-    "denominationNote": "[confirm title]",
     "credentialLink": "Verified profile on Psychology Today"
   }
 }

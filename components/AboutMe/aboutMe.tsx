@@ -25,19 +25,19 @@ const AboutMe = ({ dict }: { dict: Dict }) => (
 
       <div className="flex flex-col gap-2.5 border-[1.5px] border-dashed border-neutral-400 rounded-2xl p-5 mb-5">
         <div className="text-[10px] tracking-wide font-mono text-accent-700">
-          {dict.aboutMe.credentialsPendingLabel}
+          {dict.aboutMe.credentialsBoxLabel}
         </div>
         <div className="text-sm text-neutral-800">
           {dict.aboutMe.credentialsFormationLabel}:{" "}
-          <span className="text-neutral-700">{dict.aboutMe.credentialsPlaceholder}</span>
+          <span className="text-neutral-700">{dict.aboutMe.credentialsFormationValue}</span>
         </div>
         <div className="text-sm text-neutral-800">
           {dict.aboutMe.credentialsRegistrationLabel}:{" "}
-          <span className="text-neutral-700">{dict.aboutMe.credentialsPlaceholder}</span>
+          <span className="text-neutral-700">{dict.aboutMe.credentialsRegistrationValue}</span>
         </div>
         <div className="text-sm text-neutral-800">
           {dict.aboutMe.credentialsAssociationLabel}:{" "}
-          <span className="text-neutral-700">{dict.aboutMe.credentialsPlaceholder}</span>
+          <span className="text-neutral-700">{dict.aboutMe.credentialsAssociationValue}</span>
         </div>
         <p className="text-xs text-neutral-700 mt-1">
           {dict.aboutMe.credentialsSourceNote}

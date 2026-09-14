@@ -14,9 +14,8 @@
   },
   "hero": {
     "titleBefore": "Te acompaño a atravesar",
-    "specialtiesExample": "ansiedad · duelo · vínculos de pareja · adolescencia",
+    "specialtiesExample": "espiritualidad · duelo · terapia de pareja · ansiedad",
     "titleAfter": "con escucha profesional.",
-    "placeholderNote": "Ejemplo ilustrativo — reemplazar por las especialidades reales de Ignacia antes de publicar.",
     "subtitle": "Un espacio de escucha y acompañamiento profesional, para encontrar claridad y herramientas en el momento en que las necesites.",
     "ctaPrimary": "Reservar una consulta",
     "ctaSecondary": "Escribime por WhatsApp"
@@ -26,34 +25,35 @@
     "subtitle": "Te acompaño a encontrar claridad y bienestar en los momentos que lo necesites.",
     "text": "Mi objetivo es brindarte un espacio de contención y escucha, donde puedas explorar tus emociones y encontrar nuevas perspectivas.",
     "photoAlt": "Retrato de Ignacia Ayala",
-    "credentialsPendingLabel": "Pendiente — confirmar con Ignacia",
+    "credentialsBoxLabel": "Formación confirmada — matrícula y colegio profesional sin confirmar",
     "credentialsFormationLabel": "Formación",
+    "credentialsFormationValue": "Certificado del Ministerio de Educación (CABA). Formación adicional en Counseling Gerontológico (Orientándome, 2025) y Neurocoaching (Holos, 2024). 2 años de experiencia profesional.",
     "credentialsRegistrationLabel": "Matrícula / registro profesional",
+    "credentialsRegistrationValue": "No publicada en su perfil profesional — confirmar con Ignacia si corresponde mostrarla.",
     "credentialsAssociationLabel": "Colegio o asociación profesional",
-    "credentialsPlaceholder": "[completar]",
-    "credentialsSourceNote": "Nota: en Psychology Today la lista hoy como \"psicóloga\" en Montevideo — confirmar la denominación correcta antes de publicar.",
+    "credentialsAssociationValue": "No figura en su perfil profesional — confirmar con Ignacia.",
+    "credentialsSourceNote": "Fuente: perfil profesional verificado (Psychology Today / Psicología Hoy). Ahí se presenta como \"Consultora Psicológica\" desde el Enfoque Centrado en la Persona; este sitio usa \"Counselor\" como término de marca.",
     "cta": "Reservar una consulta"
   },
   "specialties": {
     "title": "Especialidades",
-    "placeholderNote": "Placeholder — reemplazar por la lista real de problemas/poblaciones que trabaja Ignacia.",
-    "exampleBadge": "EJEMPLO",
+    "sourceNote": "Según su perfil profesional verificado (Psychology Today / Psicología Hoy).",
     "items": [
       {
+        "title": "Espiritualidad",
+        "description": "Un espacio para explorar la dimensión espiritual del bienestar, integrada al proceso terapéutico."
+      },
+      {
+        "title": "Duelo",
+        "description": "Acompañamiento en procesos de pérdida y duelo."
+      },
+      {
+        "title": "Terapia de pareja",
+        "description": "Trabajo con parejas sobre vínculos, comunicación y conflictos."
+      },
+      {
         "title": "Ansiedad",
-        "description": "[completar con el enfoque real de Ignacia]"
-      },
-      {
-        "title": "Duelo y pérdida",
-        "description": "[completar con el enfoque real de Ignacia]"
-      },
-      {
-        "title": "Vínculos de pareja",
-        "description": "[completar con el enfoque real de Ignacia]"
-      },
-      {
-        "title": "Adolescencia",
-        "description": "[completar con el enfoque real de Ignacia]"
+        "description": "Herramientas para manejar la ansiedad en el día a día."
       }
     ]
   },
@@ -63,7 +63,7 @@
     "items": [
       {
         "title": "Modalidad",
-        "description": "Sesiones presenciales en consultorio u online por videollamada, según lo que te resulte más cómodo.",
+        "description": "Sesiones presenciales en el consultorio (Bulevar José Batlle y Ordóñez 1624, Apto 603, Montevideo) u online por videollamada, de lunes a sábados.",
         "pending": false
       },
       {
@@ -73,27 +73,30 @@
       },
       {
         "title": "La primera consulta",
-        "description": "Conversamos sobre lo que te trae a terapia, cómo trabajo, y armamos juntas los próximos pasos. No hace falta preparar nada.",
+        "description": "Podés agendar una consulta introductoria gratuita de 15 minutos para conversar sobre lo que te trae a terapia y cómo trabajo, antes de decidir si querés continuar.",
         "pending": false
       }
     ]
   },
   "logistics": {
     "title": "Honorarios y logística",
-    "placeholderNote": "Todo este bloque necesita datos reales de Ignacia — no inventar cifras.",
+    "sourceNote": "Honorarios y modalidad de pago según su perfil profesional verificado — confirmar vigencia con Ignacia.",
     "pendingBadge": "PENDIENTE",
     "items": [
       {
         "title": "Honorarios",
-        "description": "[completar, orientación de precio por sesión]"
+        "description": "Sesión individual: $1500. Terapia de pareja: $1700. Precios variables según ingresos — consultalo directamente. Pago en efectivo, tarjeta o transferencia, el día de la sesión.",
+        "pending": false
       },
       {
         "title": "Obra social / prepaga",
-        "description": "[completar si corresponde]"
+        "description": "No trabaja con obra social ni prepaga — el pago es particular.",
+        "pending": false
       },
       {
         "title": "Política de cancelación",
-        "description": "[completar, ej. horas de anticipación]"
+        "description": "[completar, ej. horas de anticipación]",
+        "pending": true
       }
     ],
     "cta": "Reservar una consulta"
@@ -126,7 +129,6 @@
   },
   "footer": {
     "copyrightName": "Ignacia Ayala — Counselor profesional",
-    "denominationNote": "[confirmar denominación]",
     "credentialLink": "Perfil verificado en Psychology Today"
   }
 }

@@ -6,7 +6,7 @@ import type { Dict } from "@/app/i18n/dictionaries";
 const Logistics = ({ dict }: { dict: Dict }) => (
   <section id="logistica" className="max-w-[1100px] mx-auto px-6 py-14">
     <SectionHeading title={dict.logistics.title} />
-    <SectionNote>{dict.logistics.placeholderNote}</SectionNote>
+    <SectionNote>{dict.logistics.sourceNote}</SectionNote>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
       {dict.logistics.items.map((item) => (
@@ -14,7 +14,7 @@ const Logistics = ({ dict }: { dict: Dict }) => (
           key={item.title}
           title={item.title}
           description={item.description}
-          badgeLabel={dict.logistics.pendingBadge}
+          badgeLabel={item.pending ? dict.logistics.pendingBadge : undefined}
         />
       ))}
     </div>

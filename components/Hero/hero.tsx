@@ -7,17 +7,16 @@ const Hero = ({ dict }: { dict: Dict }) => (
   >
     <h1 className="text-[clamp(32px,5vw,50px)] leading-[1.15] text-balance mb-2">
       {dict.hero.titleBefore}{" "}
-      <span className="inline-block border-[1.5px] border-dashed border-neutral-400 rounded-xl px-3 py-0.5 mx-0.5 font-mono text-[0.5em] align-[2px] text-accent-700">
+      {/* Real specialties from her verified profile — a solid tag pill
+          (matching the design system's .tag-accent) rather than the mockup's
+          dashed "placeholder" border, now that this is confirmed content. */}
+      <span className="inline-block bg-accent-100 text-accent-800 rounded-full px-3 py-0.5 mx-0.5 font-mono text-[0.5em] align-[2px]">
         {dict.hero.specialtiesExample}
       </span>{" "}
       {dict.hero.titleAfter}
     </h1>
 
-    <p className="text-[11px] font-mono text-neutral-700 mb-6">
-      {dict.hero.placeholderNote}
-    </p>
-
-    <p className="text-lg text-neutral-800 max-w-[560px] mx-auto mb-8 text-balance">
+    <p className="text-lg text-neutral-800 max-w-[560px] mx-auto mb-8 mt-6 text-balance">
       {dict.hero.subtitle}
     </p>
 
