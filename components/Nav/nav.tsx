@@ -44,7 +44,7 @@ const Nav = ({ siteSettings }: { siteSettings: SiteSettings | null }) => {
         onClick={(e) => handleScroll(e, "#hero")}
         className="mr-auto no-underline flex items-center"
       >
-        <Logo className="h-9 w-auto" />
+        <Logo className="h-12 w-auto" />
       </a>
 
       {NAV_ITEMS.map((item) => (
