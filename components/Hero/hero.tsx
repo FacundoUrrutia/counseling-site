@@ -19,12 +19,12 @@ const Hero = ({ hero, siteSettings, specialties }: HeroProps) => {
       className="max-w-[900px] mx-auto px-6 pt-16 pb-14 text-center fade-in"
     >
       <h1 className="text-[clamp(32px,5vw,50px)] leading-[1.15] text-balance mb-2">
-        {hero.titleBefore}{" "}
+        {hero.titleBefore}
         {specialtiesTag && (
-          <span className="inline-block bg-accent-100 text-accent-800 rounded-full px-3 py-0.5 mx-0.5 font-mono text-[0.5em] align-[2px]">
+          <span className="block my-3 md:my-4 mx-auto w-fit bg-accent-100 text-accent-800 rounded-full px-3 py-0.5 font-mono text-[0.5em]">
             {specialtiesTag}
           </span>
-        )}{" "}
+        )}
         {hero.titleAfter}
       </h1>
 

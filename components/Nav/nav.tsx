@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 import { whatsappUrl } from "@/lib/site";
 import Logo from "@/components/ui/logo";
 import type { SiteSettings } from "@/sanity/lib/queries";
@@ -26,19 +28,49 @@ const Nav = ({ siteSettings }: { siteSettings: SiteSettings | null }) => {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    menuButtonRef.current?.focus();
+  };
+
+  // Mismo patrón que usaba el selector de idioma: Escape cierra y devuelve
+  // el foco al botón que abrió, y el scroll del body se bloquea mientras el
+  // drawer está abierto (es pantalla completa en mobile).
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMenu();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     hash: string,
   ) => {
-    if (!isHome) return;
+    if (!isHome) {
+      setMenuOpen(false);
+      return;
+    }
     e.preventDefault();
     document.getElementById(hash.replace("#", ""))?.scrollIntoView({
       behavior: "smooth",
     });
+    setMenuOpen(false);
   };
 
   return (
-    <nav className="flex items-center gap-5 md:gap-6 max-w-[1200px] mx-auto px-6 py-5 flex-wrap">
+    <nav className="flex items-center gap-5 md:gap-6 max-w-[1200px] mx-auto px-6 py-5">
       <a
         href={isHome ? "#hero" : "/"}
         onClick={(e) => handleScroll(e, "#hero")}
@@ -47,27 +79,100 @@ const Nav = ({ siteSettings }: { siteSettings: SiteSettings | null }) => {
         <Logo className="h-12 w-auto" />
       </a>
 
-      {NAV_ITEMS.map((item) => (
-        <a
-          key={item.href}
-          href={isHome ? item.href : `/${item.href}`}
-          onClick={(e) => handleScroll(e, item.href)}
-          className="text-sm text-ink/80 hover:text-accent transition-colors no-underline whitespace-nowrap"
-        >
-          {item.label}
-        </a>
-      ))}
+      {/* Desktop: links + WhatsApp inline, como siempre */}
+      <div className="hidden md:flex items-center gap-5 lg:gap-6">
+        {NAV_ITEMS.map((item) => (
+          <a
+            key={item.href}
+            href={isHome ? item.href : `/${item.href}`}
+            onClick={(e) => handleScroll(e, item.href)}
+            className="text-sm text-ink/80 hover:text-accent transition-colors no-underline whitespace-nowrap"
+          >
+            {item.label}
+          </a>
+        ))}
 
-      {siteSettings && (
-        <a
-          href={whatsappUrl(siteSettings.whatsappNumber, siteSettings.whatsappMessage)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[13px] bg-accent-2-700 text-bg px-[18px] py-2.5 rounded-full whitespace-nowrap no-underline hover:bg-accent-2-800 transition-colors"
-        >
-          {siteSettings.whatsappNavLabel}
-        </a>
-      )}
+        {siteSettings && (
+          <a
+            href={whatsappUrl(siteSettings.whatsappNumber, siteSettings.whatsappMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[13px] bg-accent-2-700 text-bg px-[18px] py-2.5 rounded-full whitespace-nowrap no-underline hover:bg-accent-2-800 transition-colors"
+          >
+            {siteSettings.whatsappNavLabel}
+          </a>
+        )}
+      </div>
+
+      {/* Mobile: botón de hamburguesa, el resto vive en el drawer */}
+      <button
+        ref={menuButtonRef}
+        type="button"
+        onClick={() => setMenuOpen(true)}
+        aria-label="Abrir menú"
+        aria-haspopup="true"
+        aria-expanded={menuOpen}
+        aria-controls="mobile-menu"
+        className="md:hidden p-2 -mr-2 text-ink"
+      >
+        <Menu className="w-6 h-6" />
+      </button>
+
+      {/* Fondo oscuro detrás del drawer */}
+      <div
+        onClick={closeMenu}
+        aria-hidden="true"
+        className={`md:hidden fixed inset-0 bg-ink/40 z-40 transition-opacity duration-300 ${
+          menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+      {/* Drawer — entra deslizando de derecha a izquierda */}
+      <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menú de navegación"
+        className={`md:hidden fixed top-0 right-0 h-dvh w-[78%] max-w-[320px] bg-bg shadow-lg z-50 transition-transform duration-300 ease-out ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex justify-end p-4">
+          <button
+            type="button"
+            onClick={closeMenu}
+            aria-label="Cerrar menú"
+            className="p-2 text-ink"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        <div className="flex flex-col px-8 pt-2 pb-8 gap-1">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={isHome ? item.href : `/${item.href}`}
+              onClick={(e) => handleScroll(e, item.href)}
+              className="py-3 text-base text-ink/80 hover:text-accent transition-colors no-underline border-b border-ink/[0.06]"
+            >
+              {item.label}
+            </a>
+          ))}
+
+          {siteSettings && (
+            <a
+              href={whatsappUrl(siteSettings.whatsappNumber, siteSettings.whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="mt-6 text-center text-sm bg-accent-2-700 text-bg px-[18px] py-3 rounded-full no-underline hover:bg-accent-2-800 transition-colors"
+            >
+              {siteSettings.whatsappNavLabel}
+            </a>
+          )}
+        </div>
+      </div>
     </nav>
   );
 };
