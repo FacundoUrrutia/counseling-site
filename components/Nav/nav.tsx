@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { whatsappUrl } from "@/lib/site";
 import type { SiteSettings } from "@/sanity/lib/queries";
 
@@ -41,9 +42,16 @@ const Nav = ({ siteSettings }: { siteSettings: SiteSettings | null }) => {
       <a
         href={isHome ? "#hero" : "/"}
         onClick={(e) => handleScroll(e, "#hero")}
-        className="text-[19px] mr-auto no-underline text-ink"
+        className="mr-auto no-underline flex items-center"
       >
-        {siteSettings?.brandName ?? "Ignacia Ayala"}
+        <Image
+          src="/logo/isologo-horizontal.svg"
+          alt={siteSettings?.brandName ?? "Ignacia Ayala"}
+          width={480}
+          height={100}
+          priority
+          className="h-9 w-auto"
+        />
       </a>
 
       {NAV_ITEMS.map((item) => (

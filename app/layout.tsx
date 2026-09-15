@@ -23,6 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       siteSettings?.metaDescription ??
       "Un espacio para escuchar, reflexionar y crecer. Acompañamiento profesional en tu proceso de cambio.",
+    manifest: "/site.webmanifest",
   };
 }
 
