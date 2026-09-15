@@ -1,8 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { whatsappUrl } from "@/lib/site";
+import Logo from "@/components/ui/logo";
 import type { SiteSettings } from "@/sanity/lib/queries";
 
 // Labels de navegación: quedan fijos en código, no en Sanity — están
@@ -44,14 +44,7 @@ const Nav = ({ siteSettings }: { siteSettings: SiteSettings | null }) => {
         onClick={(e) => handleScroll(e, "#hero")}
         className="mr-auto no-underline flex items-center"
       >
-        <Image
-          src="/logo/isologo-horizontal.svg"
-          alt={siteSettings?.brandName ?? "Ignacia Ayala"}
-          width={480}
-          height={100}
-          priority
-          className="h-9 w-auto"
-        />
+        <Logo className="h-9 w-auto" />
       </a>
 
       {NAV_ITEMS.map((item) => (
