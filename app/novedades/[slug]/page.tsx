@@ -71,30 +71,38 @@ export default async function NovedadPage({
         </h1>
         <p className="text-lg text-neutral-700 leading-relaxed mb-8">{novedad.description}</p>
 
+        {/* Sin object-cover ni aspect-ratio fijo: en las cards recortar está
+            bien (miniatura), pero acá tiene que verse la imagen completa —
+            cada <Image> usa las dimensiones reales del asset para mantener
+            su proporción natural en vez de forzarla a una caja. */}
         <div className="mb-10">
-          <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-4">
-            <Image
-              src={urlFor(firstImage).width(1200).height(750).url()}
-              alt={firstImage.alt}
-              fill
-              priority
-              sizes="(min-width: 768px) 800px, 100vw"
-              className="object-cover washed"
-            />
-          </div>
+          <Image
+            src={urlFor(firstImage).width(1200).url()}
+            alt={firstImage.alt}
+            width={firstImage.dimensions.width}
+            height={firstImage.dimensions.height}
+            priority
+            sizes="(min-width: 768px) 800px, 100vw"
+            className="w-full h-auto rounded-2xl mb-4"
+          />
 
           {restImages.length > 0 && (
-            <div className={cn("grid gap-4", restImages.length === 1 ? "grid-cols-1" : "grid-cols-2")}>
+            <div
+              className={cn(
+                "grid gap-4",
+                restImages.length === 1 ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2",
+              )}
+            >
               {restImages.map((image, index) => (
-                <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden">
-                  <Image
-                    src={urlFor(image).width(700).height(525).url()}
-                    alt={image.alt}
-                    fill
-                    sizes="(min-width: 768px) 380px, 50vw"
-                    className="object-cover washed"
-                  />
-                </div>
+                <Image
+                  key={index}
+                  src={urlFor(image).width(800).url()}
+                  alt={image.alt}
+                  width={image.dimensions.width}
+                  height={image.dimensions.height}
+                  sizes="(min-width: 768px) 380px, 100vw"
+                  className="w-full h-auto rounded-xl"
+                />
               ))}
             </div>
           )}

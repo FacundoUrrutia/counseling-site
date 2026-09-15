@@ -7,6 +7,13 @@ import type { PortableTextBlock } from "@portabletext/react";
  *  union, so this is an intersection type, not an `interface extends`. */
 export type SanityImageWithAlt = SanityImageSource & { alt: string };
 
+/** Same as SanityImageWithAlt, plus the asset's real pixel dimensions —
+ *  used where an image renders at its natural aspect ratio (no crop)
+ *  instead of inside a fixed-ratio, object-cover box. */
+export type SanityImageWithDimensions = SanityImageWithAlt & {
+  dimensions: { width: number; height: number };
+};
+
 export interface SiteSettings {
   brandName: string;
   metaTitle: string;
@@ -92,7 +99,7 @@ export interface NovedadCard {
 /** Full shape for the /novedades/[slug] detail page. */
 export interface NovedadDetail {
   title: string;
-  images: SanityImageWithAlt[];
+  images: SanityImageWithDimensions[];
   description: string;
   body: PortableTextBlock[] | null;
   publishedAt: string;
@@ -153,7 +160,9 @@ const NOVEDAD_CARD_FIELDS = /* groq */ `
 `;
 
 const NOVEDAD_DETAIL_FIELDS = /* groq */ `
-  title, images, description, body, publishedAt
+  title,
+  "images": images[]{ ..., "dimensions": asset->metadata.dimensions },
+  description, body, publishedAt
 `;
 
 /** One round trip for the whole home page — every section's content in a
