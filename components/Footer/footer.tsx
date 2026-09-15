@@ -1,15 +1,21 @@
-"use client";
+import type { SiteSettings } from "@/sanity/lib/queries";
 
-const Footer = () => {
-  return (
-    <footer className="w-full py-8 mt-2 border-t border-black/5">
-      <div className="flex flex-col items-center justify-center text-center">
-        <p className="text-sm font-serif text-black/70 tracking-wide">
-          Copyright 2026 © Ignacia Ayala
-        </p>
-      </div>
-    </footer>
-  );
-};
+const Footer = ({ siteSettings }: { siteSettings: SiteSettings }) => (
+  <footer className="max-w-[1100px] mx-auto px-6 pt-8 pb-12 border-t border-ink/10 text-center">
+    <p className="text-[13px] text-neutral-700 mb-1.5">
+      © {new Date().getFullYear()} {siteSettings.footerCopyrightName}
+    </p>
+    {siteSettings.footerCredentialUrl && siteSettings.footerCredentialLabel && (
+      <a
+        href={siteSettings.footerCredentialUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs text-accent-700 hover:text-accent-800 transition-colors"
+      >
+        {siteSettings.footerCredentialLabel}
+      </a>
+    )}
+  </footer>
+);
 
 export default Footer;
