@@ -1,10 +1,28 @@
 import { defineField, defineType } from "sanity";
 import { CaseIcon } from "@sanity/icons";
 
-/** Singleton — "Cómo trabajo". Three fixed cards (not a repeatable list):
- *  the layout pairs the first one with a photo and is designed for
- *  exactly this trio, so it's modeled as named fields rather than an
- *  open-ended array an editor could freely add to. */
+const imageField = (name: string, title: string) =>
+  defineField({
+    name,
+    title,
+    description: "Opcional — si se agrega, la card muestra la foto en vez de quedar solo con texto.",
+    type: "image",
+    options: { hotspot: true },
+    fields: [
+      defineField({
+        name: "alt",
+        title: "Texto alternativo",
+        type: "string",
+        validation: (rule) => rule.required(),
+      }),
+    ],
+  });
+
+/** Singleton — "Cómo trabajo". Tres cards fijas (no una lista abierta):
+ *  el layout está pensado para este trío exacto, así que se modelan como
+ *  campos nombrados en vez de un array que un editor podría alargar sin
+ *  que el diseño lo acompañe. Cada card tiene su propia imagen opcional —
+ *  ninguna está atada a una sola foto fija como antes. */
 export default defineType({
   name: "approach",
   title: "Cómo trabajo",
@@ -16,22 +34,6 @@ export default defineType({
       title: "Título de la sección",
       type: "string",
       initialValue: "Cómo trabajo",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "officePhoto",
-      title: "Foto del consultorio",
-      description: "Se muestra junto a la card de Modalidad.",
-      type: "image",
-      options: { hotspot: true },
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Texto alternativo",
-          type: "string",
-          validation: (rule) => rule.required(),
-        }),
-      ],
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -48,6 +50,7 @@ export default defineType({
       rows: 3,
       validation: (rule) => rule.required(),
     }),
+    imageField("modalityImage", "Card 1 — imagen"),
     defineField({
       name: "sessionDurationTitle",
       title: "Card 2 — título",
@@ -63,6 +66,7 @@ export default defineType({
       type: "text",
       rows: 2,
     }),
+    imageField("sessionDurationImage", "Card 2 — imagen"),
     defineField({
       name: "firstConsultTitle",
       title: "Card 3 — título",
@@ -77,6 +81,7 @@ export default defineType({
       rows: 3,
       validation: (rule) => rule.required(),
     }),
+    imageField("firstConsultImage", "Card 3 — imagen"),
   ],
   preview: {
     prepare: () => ({ title: "Cómo trabajo" }),
