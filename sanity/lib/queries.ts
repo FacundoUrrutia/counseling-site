@@ -58,13 +58,15 @@ export interface Specialty {
 
 export interface Approach {
   title: string;
-  officePhoto: SanityImageWithAlt;
   modalityTitle: string;
   modalityText: string;
+  modalityImage: SanityImageWithAlt | null;
   sessionDurationTitle: string;
   sessionDurationText: string | null;
+  sessionDurationImage: SanityImageWithAlt | null;
   firstConsultTitle: string;
   firstConsultText: string;
+  firstConsultImage: SanityImageWithAlt | null;
 }
 
 export interface Logistics {
@@ -138,10 +140,10 @@ const SPECIALTIES_SECTION_FIELDS = /* groq */ `title, sourceNote`;
 const SPECIALTY_FIELDS = /* groq */ `title, description`;
 
 const APPROACH_FIELDS = /* groq */ `
-  title, officePhoto,
-  modalityTitle, modalityText,
-  sessionDurationTitle, sessionDurationText,
-  firstConsultTitle, firstConsultText
+  title,
+  modalityTitle, modalityText, modalityImage,
+  sessionDurationTitle, sessionDurationText, sessionDurationImage,
+  firstConsultTitle, firstConsultText, firstConsultImage
 `;
 
 const LOGISTICS_FIELDS = /* groq */ `
