@@ -56,16 +56,16 @@ export default defineType({
       name: "description",
       title: "Descripción breve",
       description:
-        "Se muestra en la card de la home y en el listado de /novedades — 1 a 2 líneas.",
+        "Se muestra en la card de la home y en el listado de /novedades — un par de líneas, lo más breve posible.",
       type: "text",
       rows: 2,
-      validation: (rule) => rule.required().max(220),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "body",
       title: "Texto",
       description:
-        "Se muestra solo en la página individual del post. Seleccioná texto y usá el botón de negrita, o cambiá el estilo del párrafo a \"Destacado\" para resaltarlo.",
+        'Se muestra solo en la página individual del post. Seleccioná texto y usá negrita o cursiva, cambiá el estilo del párrafo a "Destacado" para resaltarlo, o armá una lista con viñetas.',
       type: "array",
       of: [
         defineArrayMember({
@@ -74,9 +74,12 @@ export default defineType({
             { title: "Normal", value: "normal" },
             { title: "Destacado", value: "destacado" },
           ],
-          lists: [],
+          lists: [{ title: "Viñetas", value: "bullet" }],
           marks: {
-            decorators: [{ title: "Negrita", value: "strong" }],
+            decorators: [
+              { title: "Negrita", value: "strong" },
+              { title: "Cursiva", value: "em" },
+            ],
             annotations: [],
           },
         }),

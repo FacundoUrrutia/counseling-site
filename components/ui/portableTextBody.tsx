@@ -1,10 +1,10 @@
 import { PortableText, type PortableTextComponents, type PortableTextBlock } from "@portabletext/react";
 
 /** Renders the `body` field of a novedad — Portable Text, not raw HTML
- *  (see sanity/schemaTypes/novedad.ts for why). Only two block styles
- *  exist in the schema (Normal, Destacado) and one mark (Negrita), so
- *  that's all this maps — anything else added to the schema later needs
- *  a matching entry here or it renders as plain unstyled text. */
+ *  (see sanity/schemaTypes/novedad.ts for why). Only what's in the schema
+ *  is mapped here (2 block styles, 2 marks, 1 list type) — anything else
+ *  added to the schema later needs a matching entry here or it renders as
+ *  plain unstyled text. */
 const components: PortableTextComponents = {
   block: {
     normal: ({ children }) => (
@@ -16,8 +16,19 @@ const components: PortableTextComponents = {
       </p>
     ),
   },
+  list: {
+    bullet: ({ children }) => (
+      <ul className="mb-4 pl-5 list-disc space-y-1 text-neutral-800 leading-relaxed last:mb-0">
+        {children}
+      </ul>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }) => <li>{children}</li>,
+  },
   marks: {
     strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
+    em: ({ children }) => <em className="italic">{children}</em>,
   },
 };
 
