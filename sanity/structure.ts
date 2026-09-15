@@ -9,6 +9,7 @@ const SINGLETON_PANES: Array<{ id: string; title: string }> = [
   { id: "approach", title: "Cómo trabajo" },
   { id: "logistics", title: "Honorarios y logística" },
   { id: "confidentiality", title: "Confidencialidad" },
+  { id: "novedadesSection", title: "Novedades (sección)" },
 ];
 
 /**
@@ -29,11 +30,13 @@ export const structure: StructureResolver = (S) =>
       ),
       S.divider(),
       S.documentTypeListItem("specialty").title("Especialidades"),
+      S.documentTypeListItem("novedad").title("Novedades"),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() !== undefined &&
           !SINGLETON_TYPES.has(item.getId() as string) &&
-          item.getId() !== "specialty",
+          item.getId() !== "specialty" &&
+          item.getId() !== "novedad",
       ),
     ]);

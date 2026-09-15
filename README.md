@@ -113,7 +113,8 @@ Studio con todos los documentos ya poblados.
 
 **Sí** (contenido real, lo edita Ignacia): bio, foto, credenciales,
 especialidades, cómo trabaja, honorarios, confidencialidad, número de
-WhatsApp, textos de los botones de contacto, footer, meta título/descripción.
+WhatsApp, textos de los botones de contacto, footer, meta título/descripción,
+**novedades** (capacitaciones/reuniones/eventos — ver sección propia abajo).
 
 **No** (queda hardcodeado en el código):
 
@@ -129,6 +130,33 @@ WhatsApp, textos de los botones de contacto, footer, meta título/descripción.
 
 Si en algún momento alguno de estos SÍ debería ser editable, avisame —
 es un cambio chico (agregar el campo al schema correspondiente).
+
+## Novedades
+
+Reemplaza a un feed de Instagram en vivo: en vez de depender de la API de
+Meta (cuenta Business obligatoria, tokens que vencen cada ~60 días, golpe
+de performance por el embed oficial), Ignacia carga a mano en el Studio
+un resumen de lo que ya postea en Instagram (capacitaciones, reuniones,
+eventos). Sin tokens, sin dependencias externas, sin nada que se rompa
+solo con el tiempo.
+
+- **Home**: sección "Novedades" con las últimas 3, más un link "Ver
+  todas".
+- **`/novedades`**: el listado completo — grid de 3 por fila en
+  desktop, slider de a 1 (scroll-snap nativo, sin librería de carrusel)
+  en mobile.
+- **`/novedades/[slug]`**: página individual por post — hasta 3
+  imágenes, título, descripción breve, y el texto completo.
+
+El campo **"Texto"** de cada novedad es Portable Text (el formato nativo
+de Sanity para texto enriquecido), no HTML crudo — le da a Ignacia
+negrita y saltos de párrafo con una barra de edición simple, más un
+estilo de párrafo "Destacado" para resaltar texto prioritario, sin que
+tenga que escribir ninguna etiqueta a mano. Se renderiza en
+`components/ui/portableTextBody.tsx` — si en algún momento se agrega
+otro estilo o marca al schema (`sanity/schemaTypes/novedad.ts`), hay que
+sumarle el mapeo correspondiente ahí o se muestra como texto plano sin
+avisar.
 
 ## El formulario de contacto
 
@@ -148,15 +176,18 @@ redeployar — el peor caso es esperar hasta 60 segundos.
 ## Schema — decisiones de diseño
 
 - **Singletons con ID fijo** (`siteSettings`, `hero`, `aboutMe`,
-  `specialtiesSection`, `approach`, `logistics`, `confidentiality`): la
-  estructura del Studio (`sanity/structure.ts`) los muestra como panel
-  único de edición, sin opción de "crear nuevo" — no hay riesgo de que
-  alguien cree un segundo "Hero" por accidente.
-- **`specialty` es el único tipo repetible de verdad** — las otras
-  secciones (Cómo trabajo, Honorarios) tienen 3 cards fijas con un
+  `specialtiesSection`, `approach`, `logistics`, `confidentiality`,
+  `novedadesSection`): la estructura del Studio (`sanity/structure.ts`)
+  los muestra como panel único de edición, sin opción de "crear nuevo"
+  — no hay riesgo de que alguien cree un segundo "Hero" por accidente.
+- **`specialty` y `novedad` son los tipos repetibles de verdad** — las
+  otras secciones (Cómo trabajo, Honorarios) tienen 3 cards fijas con un
   layout específico (una de ellas emparejada con una foto), así que se
   modelaron como campos nombrados en vez de un array abierto que un
-  editor podría alargar sin que el diseño lo acompañe.
+  editor podría alargar sin que el diseño lo acompañe. `novedad` sí es
+  genuinamente abierto — y es el único tipo con página de detalle propia
+  (`slug`), porque a diferencia del resto necesitaba una URL individual
+  para compartir cada post.
 - **Sin i18n** — el sitio es 100% español; no hay campos duplicados
   por idioma ni el plugin `document-internationalization`.
 - **Campos de texto en vez de un booleano "pendiente"**: cuando algo

@@ -6,6 +6,7 @@ import AboutMe from "@/components/AboutMe/aboutMe";
 import Specialties from "@/components/Specialties/specialties";
 import Approach from "@/components/Approach/approach";
 import Logistics from "@/components/Logistics/logistics";
+import Novedades from "@/components/Novedades/novedades";
 import Confidentiality from "@/components/Confidentiality/confidentiality";
 import ContactForm from "@/components/ContactForm/contactForm";
 import Footer from "@/components/Footer/footer";
@@ -30,6 +31,9 @@ export default async function Home() {
       {data.approach && <Approach approach={data.approach} />}
       {data.logistics && data.siteSettings && (
         <Logistics logistics={data.logistics} siteSettings={data.siteSettings} />
+      )}
+      {data.novedadesSection && (
+        <Novedades section={data.novedadesSection} items={data.latestNovedades} />
       )}
       {data.confidentiality && <Confidentiality confidentiality={data.confidentiality} />}
       {data.siteSettings && <ContactForm siteSettings={data.siteSettings} />}

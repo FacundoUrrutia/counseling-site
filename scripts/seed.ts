@@ -184,6 +184,14 @@ async function seed() {
     text: "Todo lo que se comparte en sesión está protegido por el secreto profesional, con las excepciones legales que correspondan ante riesgo de vida.",
   });
 
+  await client.createOrReplace({
+    _id: "novedadesSection",
+    _type: "novedadesSection",
+    title: "Novedades",
+  });
+  // Los posts (`novedad`) no se cargan acá — van uno por uno cuando Ignacia
+  // manda el contenido real. Ver README → "Novedades".
+
   console.log("✓ Listo. Contenido cargado en el dataset:", dataset);
 }
 

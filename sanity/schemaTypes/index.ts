@@ -6,6 +6,8 @@ import specialty from "./specialty";
 import approach from "./approach";
 import logistics from "./logistics";
 import confidentiality from "./confidentiality";
+import novedadesSection from "./novedadesSection";
+import novedad from "./novedad";
 
 export const schemaTypes = [
   siteSettings,
@@ -16,6 +18,8 @@ export const schemaTypes = [
   approach,
   logistics,
   confidentiality,
+  novedadesSection,
+  novedad,
 ];
 
 /** Document type names with exactly one instance — used by structure.ts
@@ -28,4 +32,5 @@ export const SINGLETON_TYPES = new Set([
   "approach",
   "logistics",
   "confidentiality",
+  "novedadesSection",
 ]);

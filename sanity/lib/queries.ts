@@ -1,4 +1,5 @@
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { PortableTextBlock } from "@portabletext/react";
 
 /** Image field shape as it comes back from a GROQ query with no
  *  projection on the field — the raw stored object, which is exactly
@@ -74,6 +75,29 @@ export interface Confidentiality {
   text: string;
 }
 
+export interface NovedadesSection {
+  title: string;
+}
+
+/** Shape used for both the home section's 3 cards and the /novedades
+ *  listing — one representative image (the first), not the full gallery. */
+export interface NovedadCard {
+  title: string;
+  slug: string;
+  image: SanityImageWithAlt;
+  description: string;
+  publishedAt: string;
+}
+
+/** Full shape for the /novedades/[slug] detail page. */
+export interface NovedadDetail {
+  title: string;
+  images: SanityImageWithAlt[];
+  description: string;
+  body: PortableTextBlock[] | null;
+  publishedAt: string;
+}
+
 export interface HomePageData {
   siteSettings: SiteSettings | null;
   hero: Hero | null;
@@ -83,6 +107,8 @@ export interface HomePageData {
   approach: Approach | null;
   logistics: Logistics | null;
   confidentiality: Confidentiality | null;
+  novedadesSection: NovedadesSection | null;
+  latestNovedades: NovedadCard[];
 }
 
 const SITE_SETTINGS_FIELDS = /* groq */ `
@@ -120,6 +146,16 @@ const LOGISTICS_FIELDS = /* groq */ `
 
 const CONFIDENTIALITY_FIELDS = /* groq */ `text`;
 
+const NOVEDADES_SECTION_FIELDS = /* groq */ `title`;
+
+const NOVEDAD_CARD_FIELDS = /* groq */ `
+  title, "slug": slug.current, "image": images[0], description, publishedAt
+`;
+
+const NOVEDAD_DETAIL_FIELDS = /* groq */ `
+  title, images, description, body, publishedAt
+`;
+
 /** One round trip for the whole home page — every section's content in a
  *  single GROQ query instead of one fetch per component. */
 export const HOME_PAGE_QUERY = /* groq */ `{
@@ -130,9 +166,28 @@ export const HOME_PAGE_QUERY = /* groq */ `{
   "specialties": *[_type == "specialty"] | order(order asc) { ${SPECIALTY_FIELDS} },
   "approach": *[_type == "approach"][0]{ ${APPROACH_FIELDS} },
   "logistics": *[_type == "logistics"][0]{ ${LOGISTICS_FIELDS} },
-  "confidentiality": *[_type == "confidentiality"][0]{ ${CONFIDENTIALITY_FIELDS} }
+  "confidentiality": *[_type == "confidentiality"][0]{ ${CONFIDENTIALITY_FIELDS} },
+  "novedadesSection": *[_type == "novedadesSection"][0]{ ${NOVEDADES_SECTION_FIELDS} },
+  "latestNovedades": *[_type == "novedad"] | order(publishedAt desc) [0...3] { ${NOVEDAD_CARD_FIELDS} }
 }`;
 
 /** Metadata only needs siteSettings — generateMetadata() uses this instead
  *  of the full HOME_PAGE_QUERY so a metadata-only request stays cheap. */
 export const SITE_SETTINGS_QUERY = /* groq */ `*[_type == "siteSettings"][0]{ ${SITE_SETTINGS_FIELDS} }`;
+
+/** /novedades — every post, newest first. */
+export const NOVEDADES_LIST_QUERY = /* groq */ `{
+  "section": *[_type == "novedadesSection"][0]{ ${NOVEDADES_SECTION_FIELDS} },
+  "items": *[_type == "novedad"] | order(publishedAt desc) { ${NOVEDAD_CARD_FIELDS} }
+}`;
+
+export interface NovedadesListData {
+  section: NovedadesSection | null;
+  items: NovedadCard[];
+}
+
+/** /novedades/[slug] — one post's full content. */
+export const NOVEDAD_BY_SLUG_QUERY = /* groq */ `*[_type == "novedad" && slug.current == $slug][0]{ ${NOVEDAD_DETAIL_FIELDS} }`;
+
+/** Every slug, for generateStaticParams(). */
+export const NOVEDAD_SLUGS_QUERY = /* groq */ `*[_type == "novedad"]{ "slug": slug.current }`;

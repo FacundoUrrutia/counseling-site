@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { whatsappUrl } from "@/lib/site";
 import type { SiteSettings } from "@/sanity/lib/queries";
 
@@ -12,16 +13,25 @@ const NAV_ITEMS = [
   { label: "Especialidades", href: "#especialidades" },
   { label: "Cómo trabajo", href: "#enfoque" },
   { label: "Honorarios", href: "#logistica" },
+  { label: "Novedades", href: "#novedades" },
   { label: "Contacto", href: "#contacto" },
 ];
 
 const Nav = ({ siteSettings }: { siteSettings: SiteSettings | null }) => {
+  // Nav se reutiliza en /novedades y /novedades/[slug], que no tienen estas
+  // secciones — ahí un anchor debe navegar de vuelta a "/#seccion" (deja que
+  // el navegador lo resuelva), no intentar hacer scroll a un id inexistente
+  // en la página actual.
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
+    hash: string,
   ) => {
+    if (!isHome) return;
     e.preventDefault();
-    document.getElementById(href.replace("#", ""))?.scrollIntoView({
+    document.getElementById(hash.replace("#", ""))?.scrollIntoView({
       behavior: "smooth",
     });
   };
@@ -29,7 +39,7 @@ const Nav = ({ siteSettings }: { siteSettings: SiteSettings | null }) => {
   return (
     <nav className="flex items-center gap-5 md:gap-6 max-w-[1200px] mx-auto px-6 py-5 flex-wrap">
       <a
-        href="#hero"
+        href={isHome ? "#hero" : "/"}
         onClick={(e) => handleScroll(e, "#hero")}
         className="text-[19px] mr-auto no-underline text-ink"
       >
@@ -39,7 +49,7 @@ const Nav = ({ siteSettings }: { siteSettings: SiteSettings | null }) => {
       {NAV_ITEMS.map((item) => (
         <a
           key={item.href}
-          href={item.href}
+          href={isHome ? item.href : `/${item.href}`}
           onClick={(e) => handleScroll(e, item.href)}
           className="text-sm text-ink/80 hover:text-accent transition-colors no-underline whitespace-nowrap"
         >
